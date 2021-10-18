@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 namespace Ships2._0
 {
     public partial class Form1 : Form
-    {123
+    {
         public static string Connection = @"Data Source=PK306NEW-10;Initial Catalog=Ships;Integrated Security=True";
         private SqlConnection sqlConnection = new SqlConnection(Connection);
 
