@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace Ships2._0
 {
@@ -99,24 +100,14 @@ namespace Ships2._0
             Ships.Rows.Clear();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
-            sqlCommand.CommandText = $"Select * from Ships";
+            sqlCommand.CommandText = $"Select * From Ships";
             SqlDataReader reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                Ships.Rows.Add(reader[0].ToString(), reader[1].ToString(), reader[2].ToString());
-            }
-            reader.Close();
-        }
-        public void ShipsDate()
-        {
-            Ships.Rows.Clear();
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = sqlConnection;
-            sqlCommand.CommandText = $"Select * From Ships where launched < 1920";
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-            while (reader.Read())
-            {
-                Ships.Rows.Add(reader[0].ToString(), reader[1].ToString(), reader[2].ToString());
+                var id = Ships.Rows.Add(reader[0].ToString(), reader[1].ToString(), reader[2].ToString());
+
+                if(int.Parse(reader[2].ToString()) < 1920)
+                    Ships.Rows[id].DefaultCellStyle.BackColor = Color.Yellow;
             }
             reader.Close();
         }
