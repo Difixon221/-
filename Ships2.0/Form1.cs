@@ -17,6 +17,8 @@ namespace Ships2._0
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "shipsDataSet.Outcomes". При необходимости она может быть перемещена или удалена.
+            this.outcomesTableAdapter.Fill(this.shipsDataSet.Outcomes);
             sqlConnection.Open();
         }
 

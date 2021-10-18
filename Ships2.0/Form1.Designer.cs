@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Battles = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +48,15 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipsDataSet = new Ships2._0.ShipsDataSet();
+            this.outcomesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.outcomesTableAdapter = new Ships2._0.ShipsDataSetTableAdapters.OutcomesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.Battles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Classes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Outcomes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ships)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shipsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outcomesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -191,6 +197,20 @@
             this.Column8.HeaderText = "launched";
             this.Column8.Name = "Column8";
             // 
+            // shipsDataSet
+            // 
+            this.shipsDataSet.DataSetName = "ShipsDataSet";
+            this.shipsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // outcomesBindingSource
+            // 
+            this.outcomesBindingSource.DataMember = "Outcomes";
+            this.outcomesBindingSource.DataSource = this.shipsDataSet;
+            // 
+            // outcomesTableAdapter
+            // 
+            this.outcomesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +230,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Classes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Outcomes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ships)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shipsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outcomesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,6 +257,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private ShipsDataSet shipsDataSet;
+        private System.Windows.Forms.BindingSource outcomesBindingSource;
+        private ShipsDataSetTableAdapters.OutcomesTableAdapter outcomesTableAdapter;
     }
 }
 
