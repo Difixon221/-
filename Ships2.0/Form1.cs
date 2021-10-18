@@ -9,7 +9,9 @@ namespace Ships2._0
     {
         public static string Connection = @"Data Source=PK306NEW-10;Initial Catalog=Ships;Integrated Security=True";
         private SqlConnection sqlConnection = new SqlConnection(Connection);
-
+        public string strKol;
+        public string ship;
+        public double procent;
         public Form1()
         {
             InitializeComponent();
@@ -17,6 +19,8 @@ namespace Ships2._0
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "shipsDataSet.Outcomes". При необходимости она может быть перемещена или удалена.
+            this.outcomesTableAdapter.Fill(this.shipsDataSet.Outcomes);
             sqlConnection.Open();
         }
 
@@ -108,6 +112,24 @@ namespace Ships2._0
 
                 if(int.Parse(reader[2].ToString()) < 1920)
                     Ships.Rows[id].DefaultCellStyle.BackColor = Color.Yellow;
+            }
+            reader.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText = $"Select ship, Count(battle) as numbattle From Outcomes group by ship";
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                //получение значений, для примера
+                ship = reader["ship"].ToString();
+                strKol = reader["numbattle"].ToString();
+                double a = Convert.ToDouble(strKol);
+                procent = (a / 4)*100;
+                listBox1.Items.Add(ship + " " + procent + "%");
             }
             reader.Close();
         }
