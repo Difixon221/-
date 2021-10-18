@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 namespace Ships2._0
 {
     public partial class Form1 : Form
-    {123
+    {
         public static string Connection = @"Data Source=PK306NEW-10;Initial Catalog=Ships;Integrated Security=True";
         private SqlConnection sqlConnection = new SqlConnection(Connection);
 
@@ -100,6 +100,19 @@ namespace Ships2._0
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
             sqlCommand.CommandText = $"Select * from Ships";
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Ships.Rows.Add(reader[0].ToString(), reader[1].ToString(), reader[2].ToString());
+            }
+            reader.Close();
+        }
+        public void ShipsDate()
+        {
+            Ships.Rows.Clear();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.CommandText = $"Select * From Ships where launched < 1920";
             SqlDataReader reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
