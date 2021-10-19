@@ -226,10 +226,11 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 39);
+            this.listBox1.Location = new System.Drawing.Point(12, 39);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(360, 394);
+            this.listBox1.Size = new System.Drawing.Size(278, 394);
             this.listBox1.TabIndex = 8;
+            this.listBox1.Visible = false;
             // 
             // Form1
             // 

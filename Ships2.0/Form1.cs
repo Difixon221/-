@@ -32,6 +32,7 @@ namespace Ships2._0
                 Classes.Visible = false;
                 Outcomes.Visible = false;
                 Ships.Visible = false;
+                listBox1.Visible = false;
                 BattlesInfo();
             }
             else if (comboBox1.SelectedIndex == 1)
@@ -40,6 +41,7 @@ namespace Ships2._0
                 Classes.Visible = true;
                 Outcomes.Visible = false;
                 Ships.Visible = false;
+                listBox1.Visible = false;
                 ClassesInfo();
             }
             else if (comboBox1.SelectedIndex == 2)
@@ -48,6 +50,7 @@ namespace Ships2._0
                 Classes.Visible = false;
                 Outcomes.Visible = true;
                 Ships.Visible = false;
+                listBox1.Visible = false;
                 OutcomesInfo();
             }
             else if (comboBox1.SelectedIndex == 3)
@@ -56,6 +59,7 @@ namespace Ships2._0
                 Classes.Visible = false;
                 Outcomes.Visible = false;
                 Ships.Visible = true;
+                listBox1.Visible = false;
                 ShipsInfo();
             }
 
@@ -118,6 +122,11 @@ namespace Ships2._0
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Visible = true;
+            Battles.Visible = false;
+            Classes.Visible = false;
+            Outcomes.Visible = false;
+            Ships.Visible = false;
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
             sqlCommand.CommandText = $"Select ship, Count(battle) as numbattle From Outcomes group by ship";
